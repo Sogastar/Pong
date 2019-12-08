@@ -2,8 +2,13 @@ import turtle
 wn= turtle.Screen()
 wn.title("@sogastar")
 wn.bgcolor("black")
-wn.setup(width=800, height=400)
+wn.setup(width=800, height=600)
 wn.tracer(0)
+
+
+#Score
+score_a = 0
+score_b = 0
 
 #Paddle A
 paddle_a = turtle.Turtle()
@@ -31,6 +36,19 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0 , 0)
+ball.dx = 0.5
+ball.dy = 0.5
+
+
+#Pen
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0,260)
+pen.write("Player A: 0 Player B: 0",align="center", font=("Courier", 24 , "normal"))
+
 
 #Function
 
@@ -66,3 +84,10 @@ wn.onkeypress(paddle_b_down, "l")
 #main game loop
 while True:
     wn.update()
+
+    # Move the ball
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+
+
